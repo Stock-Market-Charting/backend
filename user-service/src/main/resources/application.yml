@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:23306/smc_user
+    username: root
+    password: just4mysql
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: xulix.dl@gmail.com
+    password: wsqhgddagdgxcbry
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  issuer: Stock Market Charting
+  secret: Smc4FsD
+  validity: 1800000
