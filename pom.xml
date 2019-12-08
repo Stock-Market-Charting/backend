@@ -21,7 +21,10 @@
     </properties>
 
     <modules>
+        <module>registry-service</module>
+        <module>gateway-service</module>
         <module>user-service</module>
+        <module>stock-exchange-service</module>
     </modules>
 
     <dependencies>
