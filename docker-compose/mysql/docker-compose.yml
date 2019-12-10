@@ -27,3 +27,31 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-exchange:/var/lib/mysql
     restart: always
     container_name: docker_smc_se
+
+  mysql-company:
+    image: mysql/mysql-server:latest
+    ports:
+      - "23308:3306"
+    environment:
+      MYSQL_DATABASE: "smc_company"
+      MYSQL_ROOT_PASSWORD: "just4mysql"
+      MYSQL_ROOT_HOST: "%"
+      TZ: Asia/Shanghai
+    volumes:
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/company:/var/lib/mysql
+    restart: always
+    container_name: docker_smc_company
+
+  mysql-sector:
+    image: mysql/mysql-server:latest
+    ports:
+      - "23309:3306"
+    environment:
+      MYSQL_DATABASE: "smc_sector"
+      MYSQL_ROOT_PASSWORD: "just4mysql"
+      MYSQL_ROOT_HOST: "%"
+      TZ: Asia/Shanghai
+    volumes:
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/sector:/var/lib/mysql
+    restart: always
+    container_name: docker_smc_sector
