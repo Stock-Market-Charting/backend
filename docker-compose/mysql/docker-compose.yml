@@ -55,3 +55,17 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/sector:/var/lib/mysql
     restart: always
     container_name: docker_smc_sector
+
+  mysql-stock-price:
+    image: mysql/mysql-server:latest
+    ports:
+      - "23310:3306"
+    environment:
+      MYSQL_DATABASE: "smc_stock_price"
+      MYSQL_ROOT_PASSWORD: "just4mysql"
+      MYSQL_ROOT_HOST: "%"
+      TZ: Asia/Shanghai
+    volumes:
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-price:/var/lib/mysql
+    restart: always
+    container_name: docker_smc_stock_price

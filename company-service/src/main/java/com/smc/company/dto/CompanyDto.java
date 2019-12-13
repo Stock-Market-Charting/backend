@@ -12,7 +12,6 @@ public class CompanyDto {
     private Integer turnover;
     private String ceo;
     private String directors;
-//    private List<StockExchangeDto> stockExchanges;
     private Long sectorId;
     private String sectorName;
     private String brief;

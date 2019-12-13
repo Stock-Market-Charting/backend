@@ -44,4 +44,13 @@ public class CompanyController {
         return ResponseResult.success("Execute successfully", null);
     }
 
+    @PutMapping("/{id}/activation")
+    public ResponseResult updateStatus(@PathVariable(value = "id") Long id,
+                                        @RequestParam(name = "active") boolean active) {
+
+        companyService.setStatus(id, active);
+
+        return ResponseResult.success("Execute successfully", null);
+    }
+
 }

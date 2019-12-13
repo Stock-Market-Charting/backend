@@ -22,9 +22,6 @@ public class Company extends Auditable {
     @Column(name = "directors")
     private String directors;
 
-//    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<StockExchange> stockExchanges;
-
     @Column(name = "sector_id")
     private Long sectorId;
 
