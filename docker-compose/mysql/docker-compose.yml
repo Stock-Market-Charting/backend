@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       TZ: Asia/Shanghai
     volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/user:/var/lib/mysql
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/user:/var/lib/mysql/:rw
     restart: always
     container_name: docker_smc_user
     networks:
@@ -26,7 +26,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       TZ: Asia/Shanghai
     volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-exchange:/var/lib/mysql
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-exchange:/var/lib/mysql/:rw
     restart: always
     container_name: docker_smc_se
     networks:
@@ -42,7 +42,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       TZ: Asia/Shanghai
     volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/company:/var/lib/mysql
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/company:/var/lib/mysql/:rw
     restart: always
     container_name: docker_smc_company
     networks:
@@ -58,7 +58,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       TZ: Asia/Shanghai
     volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/sector:/var/lib/mysql
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/sector:/var/lib/mysql/:rw
     restart: always
     container_name: docker_smc_sector
     networks:
@@ -74,7 +74,7 @@ services:
       MYSQL_ROOT_HOST: "%"
       TZ: Asia/Shanghai
     volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-price:/var/lib/mysql
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-price:/var/lib/mysql/:rw
     restart: always
     container_name: docker_smc_stock_price
     networks:
