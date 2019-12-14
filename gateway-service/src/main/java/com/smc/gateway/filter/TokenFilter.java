@@ -35,7 +35,8 @@ public class TokenFilter extends ZuulFilter {
         HttpServletRequest request = requestContext.getRequest();
         AntPathMatcher antPathMatcher = new AntPathMatcher();
 
-        return !antPathMatcher.match("/*/api/v1/login", request.getRequestURI());
+        return !antPathMatcher.match("/*/api/v1/login", request.getRequestURI())
+                && !antPathMatcher.match("/*/api/v1/registration/**", request.getRequestURI());
     }
 
     @Override

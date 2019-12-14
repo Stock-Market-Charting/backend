@@ -1,10 +1,9 @@
 package com.smc.sp.controller;
 
-import com.smc.sp.dto.PageDto;
-import com.smc.sp.dto.ResponseResult;
-import com.smc.sp.dto.StockPriceDto;
-import com.smc.sp.dto.Summary;
+import com.smc.sp.dto.*;
 import com.smc.sp.service.IStockPriceService;
+import com.smc.sp.vo.CompanyCodeStockExchangeName;
+import com.smc.sp.vo.StockPriceChartVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -15,6 +14,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/stock-prices")
@@ -46,6 +48,20 @@ public class StockPriceController {
         Summary summary = stockPriceService.importStockPrices(file);
 
         return ResponseResult.success("upload successfully", summary);
+    }
+
+    @PostMapping("/charts")
+    public ResponseResult<List<StockPriceChartDto>> generateCharts(@RequestBody StockPriceChartVo body) {
+        List<StockPriceChartDto> stockPriceChartDtoList = new ArrayList<>();
+
+        body.getList().forEach(vo -> {
+            StockPriceChartDto stockPriceChartDto = stockPriceService.generateChartFor(
+                 vo.getCompanyCode(), vo.getStockExchangeName(), body.getDateFrom(), body.getDateTo()
+            );
+            stockPriceChartDtoList.add(stockPriceChartDto);
+        });
+
+        return ResponseResult.success("charts are generated successfully", stockPriceChartDtoList);
     }
 
 }

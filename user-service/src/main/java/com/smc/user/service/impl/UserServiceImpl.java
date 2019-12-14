@@ -40,6 +40,8 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDto addUser(UserVo userVo) {
         User user = convertToEntity(null, userVo);
+        Optional<User> existingUser = dao.findByUsername(user.getUsername());
+        if (existingUser.isPresent()) throw new RuntimeException(("User " + user.getUsername()) + " has been registered, please change the username, and try again.");
         return convertToDto(dao.save(user));
     }
 

@@ -25,4 +25,9 @@ public class GlobalExceptionHandler {
         return ResponseResult.fail("method argument not valid");
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseResult handlerException(RuntimeException e) {
+        return ResponseResult.fail(e.getMessage());
+    }
+
 }

@@ -6,6 +6,8 @@ import com.smc.sp.feign.FeignClients;
 import com.smc.sp.repository.StockPriceRepository;
 import com.smc.sp.service.IPageService;
 import com.smc.sp.service.IStockPriceService;
+import com.smc.sp.vo.CompanyCodeStockExchangeName;
+import com.smc.sp.vo.StockPriceChartVo;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StockPriceServiceImpl implements IStockPriceService {
@@ -151,6 +154,37 @@ public class StockPriceServiceImpl implements IStockPriceService {
             }
         }
         return summary;
+    }
+
+    @Override
+    public StockPriceChartDto generateChartFor(
+            String companyCode, String stockExchange, Date dateFrom, Date dateTo) {
+
+        StockPriceChartDto stockPriceChartDto = new StockPriceChartDto();
+
+        IpoDetailsDto ipoDetailsDto = findIpoByCompanyCodeAndStockExchange(companyCode, stockExchange);
+        if (ipoDetailsDto == null) return stockPriceChartDto;
+
+        stockPriceChartDto.setCompanyName(ipoDetailsDto.getCompanyName());
+        stockPriceChartDto.setCompanyCode(companyCode);
+        stockPriceChartDto.setStockExchange(stockExchange);
+
+        if (dateFrom == null) dateFrom = new Date();
+        if (dateTo == null) dateTo = new Date();
+
+        List<StockPrice> list = stockPriceRepository.findAllByCompanyCodeAndStockExchangeAndStockTimestampBetween(
+                companyCode, stockExchange, dateFrom, dateTo
+        );
+
+        List<StockPriceDateDto> stockPriceDateDtoList = list.stream().map(sp -> {
+            StockPriceDateDto stockPriceDateDto = new StockPriceDateDto();
+            BeanUtils.copyProperties(sp, stockPriceDateDto);
+            return stockPriceDateDto;
+        }).collect(Collectors.toList());
+
+        stockPriceChartDto.setList(stockPriceDateDtoList);
+
+        return stockPriceChartDto;
     }
 
     private IpoDetailsDto findIpoByCompanyCodeAndStockExchange(String companyCode, String stockExchange) {

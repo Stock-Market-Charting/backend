@@ -3,9 +3,10 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
-  serviceUrl:
-    defaultZone: http://localhost:8761/eureka/
+    hostname: registry-service
+  client:
+    serviceUrl:
+      defaultZone: http://registry-service:8761/eureka/
 
 spring:
   jpa:

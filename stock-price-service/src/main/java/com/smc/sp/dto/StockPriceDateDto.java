@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class StockPriceDto {
+public class StockPriceDateDto {
 
     private Float currentPrice = 0.0f;
 

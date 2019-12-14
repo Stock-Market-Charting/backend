@@ -28,6 +28,15 @@ public class IpoController {
         return ResponseResult.success("Execute successfully", pageDto);
     }
 
+    @GetMapping("/future")
+    public ResponseResult<PageDto<IpoDetailsDto>> findFutureIpos(
+            @PageableDefault(sort = {"updatedTime"}) Pageable pageable
+    ) {
+        PageDto<IpoDetailsDto> pageDto = ipoDetailsService.getFutureIpos(pageable);
+
+        return ResponseResult.success("Execute successfully", pageDto);
+    }
+
     @PostMapping
     public ResponseResult createIpo(@RequestBody IpoDetailsVo ipoDetailsVo) {
 

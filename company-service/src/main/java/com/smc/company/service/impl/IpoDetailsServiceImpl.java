@@ -32,6 +32,12 @@ public class IpoDetailsServiceImpl implements IIpoDetailsService {
     }
 
     @Override
+    public PageDto<IpoDetailsDto> getFutureIpos(Pageable pageable) {
+        Page<IpoDetails> page = ipoDetailsRepository.findAllByOpenDatetimeAfter(new Date(), pageable);
+        return pageService.convertToPageDto(page, this::convertToDto);
+    }
+
+    @Override
     public void add(IpoDetailsVo ipoDetailsVo) {
         IpoDetails ipoDetails = convertToEntity(null, ipoDetailsVo);
         ipoDetailsRepository.save(ipoDetails);
