@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: registry-service
+    hostname: stock-exchange-service
   client:
     serviceUrl:
       defaultZone: http://registry-service:8761/eureka/
@@ -15,6 +15,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:23307/smc_stock_exchange
+    url: jdbc:mysql://docker_smc_se:3306/smc_stock_exchange
     username: root
     password: just4mysql

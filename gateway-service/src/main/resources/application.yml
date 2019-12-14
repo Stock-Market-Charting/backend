@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: registry-service
+    hostname: gateway-service
   client:
     serviceUrl:
       defaultZone: http://registry-service:8761/eureka/

@@ -13,6 +13,8 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/user:/var/lib/mysql
     restart: always
     container_name: docker_smc_user
+    networks:
+      - network-smc
 
   mysql-stock-exchange:
     image: mysql/mysql-server:latest
@@ -27,6 +29,8 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-exchange:/var/lib/mysql
     restart: always
     container_name: docker_smc_se
+    networks:
+      - network-smc
 
   mysql-company:
     image: mysql/mysql-server:latest
@@ -41,6 +45,8 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/company:/var/lib/mysql
     restart: always
     container_name: docker_smc_company
+    networks:
+      - network-smc
 
   mysql-sector:
     image: mysql/mysql-server:latest
@@ -55,6 +61,8 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/sector:/var/lib/mysql
     restart: always
     container_name: docker_smc_sector
+    networks:
+      - network-smc
 
   mysql-stock-price:
     image: mysql/mysql-server:latest
@@ -69,3 +77,9 @@ services:
       - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-price:/var/lib/mysql
     restart: always
     container_name: docker_smc_stock_price
+    networks:
+      - network-smc
+
+networks:
+  network-smc:
+    external: true
