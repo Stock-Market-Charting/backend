@@ -12,6 +12,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://docker_smc_company:3306/smc_company
+    url: jdbc:mysql://mysql-service:3306/smc_company
     username: root
     password: just4mysql

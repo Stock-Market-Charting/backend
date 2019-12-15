@@ -2,10 +2,6 @@ version: '3'
 services:
   user-service:
     image: user-service
-    deploy:
-      resources:
-        limits:
-          memory: 400M
     container_name: user-service
     ports:
       - "8081:8081"

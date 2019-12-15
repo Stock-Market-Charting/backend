@@ -12,6 +12,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/smc_company
+    url: jdbc:mysql://localhost:3306/smc_stock_exchange
     username: root
     password: just4mysql

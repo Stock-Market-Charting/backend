@@ -1,9 +1,12 @@
+server:
+  port: 8085
+
 eureka:
   instance:
-    hostname: localhost
+    hostname: stock-price-service
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://registry-service:8761/eureka/
 
 spring:
   jpa:
@@ -12,6 +15,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/smc_company
+    url: jdbc:mysql://mysql-service:3306/smc_stock_price
     username: root
     password: just4mysql

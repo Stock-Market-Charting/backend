@@ -2,10 +2,6 @@ version: '3'
 services:
   company-service:
     image: company-service
-    deploy:
-      resources:
-        limits:
-          memory: 400M
     container_name: company-service
     ports:
       - "8083:8083"

@@ -14,7 +14,7 @@ public class Company extends Auditable {
     private String companyName;
 
     @Column(name = "turnover", nullable = false)
-    private Integer turnover;
+    private String turnover;
 
     @Column(name = "ceo", nullable = false)
     private String ceo;

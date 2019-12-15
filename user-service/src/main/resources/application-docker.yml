@@ -12,14 +12,14 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://docker_smc_user:3306/smc_user
+    url: jdbc:mysql://mysql-service:3306/smc_user
     username: root
     password: just4mysql
   mail:
     host: smtp.gmail.com
     port: 587
     username: xulix.dl@gmail.com
-    password: wsqhgddagdgxcbry
+    password: vslyrzjbmaiuaipf
     properties:
       mail:
         smtp:

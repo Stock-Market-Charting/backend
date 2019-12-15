@@ -1,102 +1,17 @@
 version: '3'
 services:
-  mysql-user:
+  mysql:
     image: mysql/mysql-server:latest
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     ports:
-      - "23306:3306"
+      - "3306:3306"
     environment:
-      MYSQL_DATABASE: "smc_user"
       MYSQL_ROOT_PASSWORD: "just4mysql"
       MYSQL_ROOT_HOST: "%"
       TZ: Asia/Shanghai
     volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/user:/var/lib/mysql
+      - /Users/lauro/Documents/Workspace/git/smc/volumes/mysql-db:/var/lib/mysql
     restart: always
-    container_name: docker_smc_user
-    networks:
-      - network-smc
-
-  mysql-stock-exchange:
-    image: mysql/mysql-server:latest
-    deploy:
-      resources:
-        limits:
-          memory: 500M
-    ports:
-      - "23307:3306"
-    environment:
-      MYSQL_DATABASE: "smc_stock_exchange"
-      MYSQL_ROOT_PASSWORD: "just4mysql"
-      MYSQL_ROOT_HOST: "%"
-      TZ: Asia/Shanghai
-    volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-exchange:/var/lib/mysql
-    restart: always
-    container_name: docker_smc_se
-    networks:
-      - network-smc
-
-  mysql-company:
-    image: mysql/mysql-server:latest
-    deploy:
-      resources:
-        limits:
-          memory: 500M
-    ports:
-      - "23308:3306"
-    environment:
-      MYSQL_DATABASE: "smc_company"
-      MYSQL_ROOT_PASSWORD: "just4mysql"
-      MYSQL_ROOT_HOST: "%"
-      TZ: Asia/Shanghai
-    volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/company:/var/lib/mysql
-    restart: always
-    container_name: docker_smc_company
-    networks:
-      - network-smc
-
-  mysql-sector:
-    image: mysql/mysql-server:latest
-    deploy:
-      resources:
-        limits:
-          memory: 500M
-    ports:
-      - "23309:3306"
-    environment:
-      MYSQL_DATABASE: "smc_sector"
-      MYSQL_ROOT_PASSWORD: "just4mysql"
-      MYSQL_ROOT_HOST: "%"
-      TZ: Asia/Shanghai
-    volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/sector:/var/lib/mysql
-    restart: always
-    container_name: docker_smc_sector
-    networks:
-      - network-smc
-
-  mysql-stock-price:
-    image: mysql/mysql-server:latest
-    deploy:
-      resources:
-        limits:
-          memory: 500M
-    ports:
-      - "23310:3306"
-    environment:
-      MYSQL_DATABASE: "smc_stock_price"
-      MYSQL_ROOT_PASSWORD: "just4mysql"
-      MYSQL_ROOT_HOST: "%"
-      TZ: Asia/Shanghai
-    volumes:
-      - /Users/lauro/Documents/Workspace/git/smc/volumes/stock-price:/var/lib/mysql
-    restart: always
-    container_name: docker_smc_stock_price
+    container_name: mysql-service
     networks:
       - network-smc
 

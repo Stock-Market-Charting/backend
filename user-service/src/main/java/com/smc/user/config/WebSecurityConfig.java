@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         super.configure(web);
         web.ignoring()
-                .antMatchers("/api/v1/registration/**");
+                .antMatchers("/api/**");
     }
 
     @Override

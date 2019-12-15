@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class CompanyVo {
     private String companyName;
-    private Integer turnover;
+    private String turnover;
     private String ceo;
     private String directors;
     private Long sectorId;
