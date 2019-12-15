@@ -2,6 +2,10 @@ version: '3'
 services:
   gateway-service:
     image: gateway-service
+    deploy:
+      resources:
+        limits:
+          memory: 400M
     container_name: gateway-service
     ports:
       - "8080:8080"

@@ -1,12 +1,9 @@
 server:
   port: 8080
 
-eureka:
-  instance:
-    hostname: gateway-service
-  client:
-    serviceUrl:
-      defaultZone: http://registry-service:8761/eureka/
-
 ribbon:
   ReadTimeout: 60000
+
+spring:
+  profiles:
+    active: @profiles.active@

@@ -1,7 +1,7 @@
 #!/bin/bash
-docker-compose down
+docker-compose --compatibility down
 docker rmi company-service
-mvn clean package
+mvn clean package -P docker
 docker build -t company-service .
-docker-compose up -d
+docker-compose --compatibility up -d
 
